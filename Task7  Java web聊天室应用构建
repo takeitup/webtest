@@ -5,7 +5,7 @@ Task7  Java web聊天室应用构建
 二、聊天室的实现
 （1）登录
      基于html的登录注册代码：
-   <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*"%>
 <%@ page import="com.wgh.model.UserInfo"%>
 <%@ page import="com.wgh.servlet.UserListener"%>
@@ -264,4 +264,4 @@ function set(selectPerson){	//自动添加聊天对象
 	}
 }
 
-完成聊天室的构建后，还需要对web聊天室进行各种测试。
+完成聊天室的构建后，还需要对web聊天室进行各种测试，加工，修改，多人分工配合讨论完成最终目标。
