@@ -1,0 +1,67 @@
+配置开发环境和运行环境说明
+一、安装JDK  
+1．双击JDK安装文件。
+2．接受协议后进入“自定义安装”对话框。在这一步中可以修改JDK安装路径和选择安装可选功能等。本次安装选择默认，点击“下一步”。
+3．安装JDK程序。  
+4．选择Java的安装路径，如图，点击“下一步”。  
+5．安装Java。  
+6．完成安装，点击“完成”。
+7．JDK环境变量配置：  首先右键点我的电脑，打开属性。然后选择“高级”里面的“环境变量”，。 
+8.在新的打开界面中的系统变量里需要设置三个属性“java_home”、“path”、“classpath”，配置环境变量
+在这里，新建2个环境变量，编辑1个已有的环境变量。如下：
+新建变量名：JAVA_HOME;
+变量值：你安装JDK的安装目录
+新建变量名：CLASSPATH
+变量值：
+.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;%TOMCAT_HOME%\BIN
+编辑环境变量的路径：
+变量名：Path;
+变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+（将此处的字符串粘贴到变量值的最前面）
+
+二、Tomcat的安装与配置
+1．双击安装文件
+2.选择端口号和登录tomcat的用户名、密码，也可以选择默认
+3.选择Java虚拟机的安装路径。点击“Install”开始安装
+4.设置Tomcat环境变量
+依然是点开电脑的环境变量对话框。
+新建一个环境变量：
+变量名：TOMCAT_HOME
+变量值：你的TOMCAT解压后的目录
+打包安装说明
+一、在TOMCAT中部署war 
+将chatroom.war包，复制到Tomcat的webapp下。这样当配置好后的访问路径便为：http://localhost:8080/chatroom/login.jsp。
+在访问之前，需要修改tomcat服务器的配置文件，打开：
+tomcat解压目录\conf\context.xml。将运行该web项目时，需要配置的数据库连接字符串增加到该xml文件中。增加后的context.xml为：
+<Context>
+
+<!-- Default set of monitored resources -->
+
+<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+<!-- Uncomment this to disable session persistence across Tomcat restarts -->
+
+<!--
+
+<Manager pathname="" />
+
+-->
+
+<!-- Uncomment this to enable Comet connection tacking (provides events
+
+on session expiration as well as webapp lifecycle) -->
+
+<!--
+
+<Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+
+-->
+
+(这里填写本Web项目运行时，需要连接的数据库配置。)
+
+</Context>
+
+
+连接串设置完毕后，便可以基于Tomcat服务器来访问web项目了。
+首先运行Tomcat的bin目录下的startup.bat，当Tomcat启动完毕后，
+在浏览器输入：localhost:8080/chatroom/login.jsp时，如果出现该Web项目的login界面时，则表明war包已成功地部署到tomcat服务器上，并可成功访问了。
