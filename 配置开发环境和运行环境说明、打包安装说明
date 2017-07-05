@@ -28,9 +28,12 @@
 新建一个环境变量：
 变量名：TOMCAT_HOME
 变量值：你的TOMCAT解压后的目录
+
+
 打包安装说明
 一、在TOMCAT中部署war 
-将chatroom.war包，复制到Tomcat的webapp下。这样当配置好后的访问路径便为：http://localhost:8080/chatroom/login.jsp。
+将chatroom.war包，复制到Tomcat的webapp下.若没有servlet-api.jar,javax.jms.jar则将其导入至tomcat\lib 和tomcat中。
+这样当配置好后的访问路径便为：http://localhost:8080/chatroom/login.jsp。
 在访问之前，需要修改tomcat服务器的配置文件，打开：
 tomcat解压目录\conf\context.xml。将运行该web项目时，需要配置的数据库连接字符串增加到该xml文件中。增加后的context.xml为：
 <Context>
